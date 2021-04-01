@@ -5,6 +5,7 @@ import { Child3 } from './components/Child3';
 import { Child4 } from './components/Child4';
 import { Child1 } from './components/Child1';
 import './index.css';
+import './App.css';
 const Padre = ({ mensaje, componente, children: propsChildren }) => {
   const [state, setstate] = useState({ mensaje: "Hola hijos de la...", componente: "(estado inicial)El papa de lo hijos saluda:", })
   const actualizaState = (mensaje, componente) => setstate({ mensaje, componente })
@@ -25,12 +26,14 @@ const Padre = ({ mensaje, componente, children: propsChildren }) => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Padre>
-      <Child1 />
-      <Child2 />
-      <Child3 />
-      <Child4 />
-    </Padre>
+    <div className='App-header'>
+      <Padre >
+        <Child1 />
+        <Child2 />
+        <Child3 />
+        <Child4 />
+      </Padre>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
