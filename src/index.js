@@ -1,32 +1,52 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import './index.css';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import './App.css'
 
-const Componente = ({ texto, numero, correo }) =>
-  <>
-    <p>{texto}</p>
-    <p>{numero}</p>
-    <p>{correo}</p>
-  </>
-Componente.propTypes = {
-  texto: PropTypes.string.isRequired,
-  numero: PropTypes.number.isRequired,
-  correo: (props, propName, componentName) => {
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(props[propName])) {
-      return new Error(
-        'Prop no valida `' + propName + '` Para ' +
-        ' `' + componentName + '`. Error en la validación.'
-      );
-    }
-  },
+
+
+export const Hijo = () => {
+  return (
+    <div>
+      Yo soy el hijo...
+    </div>
+  )
 }
+
+
+const Componente = () => {
+  const [cont, setcont] = useState(0)
+  const [verHijo, setVerHijo] = useState(true)
+  useEffect(() => {
+    console.log('componentWillMount')
+    console.log('componentDidMount')
+    console.log(cont)
+    return () => console.log('componentwillUnmount')
+  }, [cont, verHijo])
+  // sin array en todo momento y con array solo en los elementos contenidos en el array...
+  return (
+    <div>
+      <h1>hola</h1>
+      <p>{cont}</p>
+      <div>
+        <button onClick={() => setcont(cont + 1)}>incrementa contador</button>
+      </div>
+      <div>
+        <button onClick={() => setVerHijo(!verHijo)}>verijo</button>
+      </div>
+      {
+        verHijo ? (<Hijo />) : ('')
+      }
+    </div>
+  )
+}
+
 
 ReactDOM.render(
   <React.StrictMode>
     <div className='App-header'>
-      <Componente texto='texto' numero={999999999} correo='abcserc.com' />
+      <Componente />
+
     </div>
   </React.StrictMode>,
   document.getElementById('root')
