@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { Child1 } from './components/Child1';
 import { Child2 } from './components/Child2';
 import { Child3 } from './components/Child3';
 import { Child4 } from './components/Child4';
-import { Child1 } from './components/Child1';
 import './index.css';
 import './App.css';
+
 const Padre = ({ mensaje, componente, children: propsChildren }) => {
-  const [state, setstate] = useState({ mensaje: "Hola hijos de la...", componente: "(estado inicial)El papa de lo hijos saluda:", })
+  const [state, setstate] = useState({ mensaje: "Hola hijos de la...", componente: "(init state) El papa de lo hijos saluda:", })
   const actualizaState = (mensaje, componente) => setstate({ mensaje, componente })
   // esto es un patron implicito de transferecia de propiedades a cada hijo le agregamos las propiedades para modificar el estado del padre y el componente hijo
   const children = React.Children.map(propsChildren,
