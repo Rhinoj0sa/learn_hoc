@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-// esto es un patron implicito de transferecia de propiedades 
+
 // component to be wrapped
 const App = ({ sucursal, pago, impuesto, ganancia, calcularImpuesto }) =>
   <div className="App">

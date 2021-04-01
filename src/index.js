@@ -1,40 +1,16 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { Child2 } from './components/Child2';
+import { Child3 } from './components/Child3';
+import { Child4 } from './components/Child4';
+import { Child1 } from './components/Child1';
 import './index.css';
-// import App from './App';
-
-//
-const Child1 = ({ mensaje, componente, actualizaState }) =>
-  <>
-    <h2 className='hijo'>{'El hijo del papa1'}</h2>
-    <p>{componente + " " + mensaje}</p>
-    <textarea rows='3' onChange={e => actualizaState(e.target.value, 'El hijo del papa 1 dice:')} />
-  </>
-const Child2 = ({ mensaje, componente, actualizaState }) =>
-  <>
-    <h2 className='hijo'>{'El hijo del papa2'}</h2>
-    <p>{componente + " " + mensaje}</p>
-    <textarea rows='3' onChange={e => actualizaState(e.target.value, 'El hijo del papa 2 dice:')} />
-  </>
-  const Child3 = ({ mensaje, componente, actualizaState }) =>
-  <>
-    <h2 className='hijo'>{'El hijo del papa3'}</h2>
-    <p>{componente + " " + mensaje}</p>
-    <textarea rows='3' onChange={e => actualizaState(e.target.value, 'El hijo del papa 3 dice:')} />
-  </>
-  const Child4 = ({ mensaje, componente, actualizaState }) =>
-  <>
-    <h2 className='hijo'>{'El hijo del papa4'}</h2>
-    <p>{componente + " " + mensaje}</p>
-    <textarea rows='3' onChange={e => actualizaState(e.target.value, 'El hijo del papa 4 dice:')} />
-  </>
-
 const Padre = ({ mensaje, componente, children: propsChildren }) => {
-  const [state, setstate] = useState({ mensaje: "Hola hijos de la...", componente: "El papa de lo hijos saluda:", })
+  const [state, setstate] = useState({ mensaje: "Hola hijos de la...", componente: "(estado inicial)El papa de lo hijos saluda:", })
   const actualizaState = (mensaje, componente) => setstate({ mensaje, componente })
+  // esto es un patron implicito de transferecia de propiedades a cada hijo le agregamos las propiedades para modificar el estado del padre y el componente hijo
   const children = React.Children.map(propsChildren,
     child => React.cloneElement(child, { mensaje: state.mensaje, componente: state.componente, actualizaState }))
-
   return (
     <div className="padre">
       <h1>{"El papa de los hijos"}</h1>
