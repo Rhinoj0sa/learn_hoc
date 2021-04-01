@@ -2,22 +2,21 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
 
-function App({ sucursal, pago, impuesto, ganancia, calcularImpuesto }) {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Impuestos sucursal: {sucursal} </h1>
-        <input type='number' onChange={(e) => calcularImpuesto(e.target.value)} />
-        <p>{"Pago: " + pago}</p>
-        <p>{"Impuesto: " + impuesto}</p>
-        <p>{"Ganancia: " + ganancia}</p>
-      </header>
-    </div>
-  );
-}
+const App = ({ sucursal, pago, impuesto, ganancia, calcularImpuesto }) =>
+  <div className="App">
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <h1>Impuestos (HOC): {sucursal} </h1>
+      <input type='number' onChange={(e) => calcularImpuesto(e.target.value)} />
+      <p>{"Pago: " + pago}</p>
+      <p>{"Impuesto: " + impuesto}</p>
+      <p>{"Ganancia: " + ganancia}</p>
+    </header>
+  </div>
 
-const withImpuestos = (Component) => ({ sucursal, pago = 0, impuesto = 0.16 }) => () => {
+
+
+const withImpuestos = (Component) => ({ sucursal = 'Suc 00 default', pago = 0, impuesto = 0.16 }) => () => {
   const [state, setstate] = useState({
     sucursal,
     pago: '$' + 0,
@@ -40,4 +39,4 @@ const withImpuestos = (Component) => ({ sucursal, pago = 0, impuesto = 0.16 }) =
 
 }
 
-export default withImpuestos(App)({ sucursal: "Miguel Nieto" });
+export default withImpuestos(App)({});
