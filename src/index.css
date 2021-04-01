@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.padre {
+  border: 1px solid black;
+  padding: 20px;
+  text-align: center;
+}
+.hijos {
+  display: column;
+  justify-content: center;
+  align-items: center;
+}
+.hijo {
+ 
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  margin: 10px;
+}
