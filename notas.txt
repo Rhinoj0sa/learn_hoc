@@ -1,0 +1,6 @@
+Esta es una manera de usar los componentes de alto orden
+toma un componente como entrada y regresa ese mismo componente con funcionalidad modificada.
+en este caso tenemos un componente que toma App que presenta informacion y este componente en wrapeado en otro que le agrega la funcionalidad de calclular
+ los impuestos en base a la entrada en su input box.
+por si solo el componene App solamente presenta la informacion de manera estatica pero agregando la funcionalida con el wrapper y el hook useState
+le da toda la funcionalidad de calclular y presentar la info en respuesta el evento onChange..
